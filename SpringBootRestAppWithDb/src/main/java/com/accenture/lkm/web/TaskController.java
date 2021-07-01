@@ -22,6 +22,11 @@ public class TaskController {
 	@Autowired
 	private TaskServiceImpl taskServiceImpl;
 
+	@RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> home() {
+		return new ResponseEntity<String>("Welcome!!", HttpStatus.OK);
+	}
+	
 	@RequestMapping(value = "task/controller/getDetails", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<TaskBean>> getTaskDetails() {
 		List<TaskBean> listTask = new ArrayList<TaskBean>(taskServiceImpl.getAllTasks());
